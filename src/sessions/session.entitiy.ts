@@ -10,4 +10,10 @@ export class Session {
 
     @Column()
     room: string
+
+    @Column()
+    playerOne: string
+
+    @Column()
+    playerTwo: string
 }
