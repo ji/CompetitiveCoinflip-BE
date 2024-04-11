@@ -4,10 +4,10 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { Session } from './sessions/session.entitiy'
 import { SessionsService } from './sessions/sessions.service';
-import { UsersController } from './users/users.controller';
-import { UsersService } from './users/users.service';
 import { SessionsController } from './sessions/sessions.controller';
-import { SessionsService } from './sessions/sessions.service';
+import { User } from './users/user.entitiy'
+import { UsersService } from './users/users.service';
+import { UsersController } from './users/users.controller';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { SessionsService } from './sessions/sessions.service';
       username: 'postgres',
       password: '',
       database: 'competitive-coinflip',
-      entities: [Session],
+      entities: [Session, User],
       synchronize: true,
     }),
   ],
