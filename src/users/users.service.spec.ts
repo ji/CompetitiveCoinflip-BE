@@ -39,22 +39,14 @@ describe('UsersService', () => {
 
   describe('createUser', () => {
     it('Throws an exception when creting a user, whose nickname already exists.', async () => {
-      jest.spyOn(userRepository, 'existsBy').mockImplementation(() => {
-        return new Promise((resolve, _) => {
-          resolve(true);
-        });
-      });
+      jest.spyOn(userRepository, 'existsBy').mockReturnValue(new Promise((resolve, _) => resolve(true)))
       expect(async () => {
         await service.createUser('test');
       }).rejects.toThrow(UserAlreadyExistsError);
     });
 
     it('Throws an exception if saving the user fails.', async () => {
-      jest.spyOn(userRepository, 'existsBy').mockImplementation(() => {
-        return new Promise((resolve, _) => {
-          resolve(false);
-        });
-      });
+      jest.spyOn(userRepository, 'existsBy').mockReturnValue(new Promise((resolve, _) => resolve(false)))
       expect(async () => {
         await service.createUser('test');
       }).rejects.toThrow(UserCreationFailedError);
