@@ -24,7 +24,7 @@ describe('SessionsService', () => {
     sessionsRepository = module.get<Repository<Session>>(getRepositoryToken(Session));
   });
 
-  it('should be defined', () => {
+  it('Should be defined.', () => {
     expect(service).toBeDefined();
   });
 });

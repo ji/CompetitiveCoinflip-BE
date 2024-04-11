@@ -12,7 +12,7 @@ describe('SessionsController', () => {
     controller = module.get<SessionsController>(SessionsController);
   });
 
-  it('should be defined', () => {
+  it('Should be defined.', () => {
     expect(controller).toBeDefined();
   });
 });

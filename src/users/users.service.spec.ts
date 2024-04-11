@@ -33,7 +33,7 @@ describe('UsersService', () => {
     userRepository = module.get<Repository<User>>(getRepositoryToken(User));
   });
 
-  it('should be defined', () => {
+  it('Should be defined.', () => {
     expect(service).toBeDefined();
   });
 
