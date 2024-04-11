@@ -2,11 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { SessionsModule } from './sessions/sessions.module';
 import { Session } from './sessions/session.entitiy'
 import { SessionsService } from './sessions/sessions.service';
 import { UsersController } from './users/users.controller';
 import { UsersService } from './users/users.service';
+import { SessionsController } from './sessions/sessions.controller';
+import { SessionsService } from './sessions/sessions.service';
 
 @Module({
   imports: [
@@ -20,9 +21,8 @@ import { UsersService } from './users/users.service';
       entities: [Session],
       synchronize: true,
     }),
-    SessionsModule
   ],
-  controllers: [AppController, UsersController],
+  controllers: [AppController, UsersController, SessionsController],
   providers: [AppService, SessionsService, UsersService],
 })
 export class AppModule {}

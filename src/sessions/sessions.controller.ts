@@ -1,7 +1,4 @@
 import { Controller } from '@nestjs/common';
 
 @Controller('sessions')
-export class SessionsController {
-    constructor(private readonly SessionsService) {}
-}
-
+export class SessionsController {}
