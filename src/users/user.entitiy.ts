@@ -5,7 +5,11 @@ export class User {
   @Column({ unique: true })
   nickname: string;
 
-  constructor(nickname: string) {
+  @Column()
+  wantsToPlayRandom: boolean;
+
+  constructor(nickname: string, wantsToPlayRandom: boolean = true) {
     this.nickname = nickname;
+    this.wantsToPlayRandom = wantsToPlayRandom;
   }
 }

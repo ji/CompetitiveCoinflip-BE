@@ -8,6 +8,7 @@ import { SessionsController } from './sessions/sessions.controller';
 import { User } from './users/user.entitiy'
 import { UsersService } from './users/users.service';
 import { UsersController } from './users/users.controller';
+import { SessionsGateway } from './sessions/sessions.gateway';
 
 @Module({
   imports: [
@@ -23,6 +24,6 @@ import { UsersController } from './users/users.controller';
     }),
   ],
   controllers: [AppController, UsersController, SessionsController],
-  providers: [AppService, SessionsService, UsersService],
+  providers: [AppService, SessionsService, UsersService, SessionsGateway],
 })
 export class AppModule {}

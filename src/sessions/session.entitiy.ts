@@ -1,13 +1,7 @@
-import { 
-    Entity, 
-    PrimaryGeneratedColumn, 
-    Column
-} from "typeorm"
+import { Column } from "typeorm"
+import { createHash } from "crypto"
 
 export class Session {
-    @PrimaryGeneratedColumn()
-    id: number
-
     @Column()
     room: string
 
@@ -16,4 +10,10 @@ export class Session {
 
     @Column()
     playerTwo: string
+
+    constructor(playerOne: string, playerTwo: string) {
+        this.room = createHash('sha256').update(playerOne + playerTwo).digest('hex');
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
+    }
 }
