@@ -48,7 +48,7 @@ describe('SessionsService', () => {
           provide: getRepositoryToken(User),
           useValue: {
             findBy: jest.fn(),
-            update: jest.fn((_) => {
+            save: jest.fn((_) => {
               return;
             }),
           },
@@ -78,20 +78,20 @@ describe('SessionsService', () => {
       expect(sessionsGateway.startSession).toHaveBeenNthCalledWith(1, sessionOne);
       expect(sessionsGateway.startSession).toHaveBeenNthCalledWith(2, sessionTwo);
 
-      expect(usersRepository.update).toHaveBeenCalledTimes(4);
-      expect(usersRepository.update).toHaveBeenNthCalledWith(
+      expect(usersRepository.save).toHaveBeenCalledTimes(4);
+      expect(usersRepository.save).toHaveBeenNthCalledWith(
         1,
         new User(userOne.nickname, false),
       );
-      expect(usersRepository.update).toHaveBeenNthCalledWith(
+      expect(usersRepository.save).toHaveBeenNthCalledWith(
         2,
         new User(userTwo.nickname, false),
       );
-      expect(usersRepository.update).toHaveBeenNthCalledWith(
+      expect(usersRepository.save).toHaveBeenNthCalledWith(
         3,
         new User(userThree.nickname, false),
       );
-      expect(usersRepository.update).toHaveBeenNthCalledWith(
+      expect(usersRepository.save).toHaveBeenNthCalledWith(
         4,
         new User(userFour.nickname, false),
       );
@@ -103,7 +103,7 @@ describe('SessionsService', () => {
         .mockReturnValue(new Promise((resolve, _) => resolve([userOne])));
 
       expect(sessionsGateway.startSession).toHaveBeenCalledTimes(0);
-      expect(usersRepository.update).toHaveBeenCalledTimes(0);
+      expect(usersRepository.save).toHaveBeenCalledTimes(0);
     });
 
     it('Should not collaborate if there is no users searching for a match.', () => {
@@ -112,7 +112,7 @@ describe('SessionsService', () => {
         .mockReturnValue(new Promise((resolve, _) => resolve([])));
 
       expect(sessionsGateway.startSession).toHaveBeenCalledTimes(0);
-      expect(usersRepository.update).toHaveBeenCalledTimes(0);
+      expect(usersRepository.save).toHaveBeenCalledTimes(0);
     });
   });
 });

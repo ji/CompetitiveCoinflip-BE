@@ -1,7 +1,7 @@
 import { Column } from "typeorm"
 import { createHash } from "crypto"
 
-enum CoinSide {
+export enum CoinSide {
     heads = "HEADS",
     tails = "TAILS"
 }

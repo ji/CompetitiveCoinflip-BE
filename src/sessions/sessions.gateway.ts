@@ -10,5 +10,10 @@ export class SessionsGateway {
 
   startSession(session: Session) {
     
+    this.notifyUsers();
+  }
+
+  private notifyUsers() {
+
   }
 }
